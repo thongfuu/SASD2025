@@ -18,3 +18,6 @@ Software is Grown, Not Assembled
 - แนวทางของ Christopher Alexander: เริ่มจากระบบเล็กๆ แล้วค่อยๆ แบ่งส่วน (Split) และขยายออก โดยหลีกเลี่ยงขั้นตอนการ Integration ใหญ่ๆ ที่มักเกิดปัญหา แต่ให้ Integration เกิดขึ้นตลอดเวลาตั้งแต่จุดเล็กๆ
 Maintenance & Insight
 - ความเข้าใจที่ลึกซึ้งที่สุดเกี่ยวกับระบบ (Deepest insights) มักเกิดขึ้นในช่วงของการบำรุงรักษา (Maintenance) ซึ่งเป็นช่วงที่เรารู้แล้วว่าจริงๆ แล้วระบบ ควรจะ ถูกสร้างมาอย่างไร
+
+จากคลิป : Live with Tim O’Reilly: A Conversation with Author and Programmer Kent Beck
+[![Youtube](https://img.youtube.com/vi/5cFxIwCaW0M/maxresdefault.jpg)](https://www.youtube.com/watch?v=5cFxIwCaW0M)
