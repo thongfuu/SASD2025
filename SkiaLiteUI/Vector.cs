@@ -34,4 +34,8 @@ public readonly struct Vector
     {
         return new Vector(a.X * factor, a.Y * factor);
     }
+    public static Vector operator /(Vector a, float divider)
+    {
+        return new Vector(a.X / divider, a.Y / divider);
+    }
 }

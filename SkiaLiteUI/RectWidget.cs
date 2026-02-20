@@ -6,8 +6,19 @@ namespace SkiaLiteUI;
 
 public abstract class Widget
 {
-    public virtual void Act(float deltaTime) { }
-    public abstract void Draw(SKCanvas canvas);
+    Action? action;
+    public void AddAction(Action action) => this.action = action;
+    public virtual void Act(float deltaTime) { action?.Act(deltaTime); }
+    
+    public List<Widget> Children { get; } = new();
+    public virtual void Draw(SKCanvas canvas)
+    {
+        // ID: 564 กรวิชญ์ ชูน้อย
+        DrawSelf(canvas);
+        for (int i = 0; i < Children.Count; i++)
+            Children[i].Draw(canvas);
+    }
+    public abstract void DrawSelf(SKCanvas canvas);
 }
 
 public class RectWidget : Widget
@@ -21,22 +32,12 @@ public class RectWidget : Widget
     {
         Position = origin;
         Size = size;
-        
-        var rand = new Random();
-        time = rand.NextSingle()*5;
     }
 
-    float time = 0;
-    public override void Act(float deltaTime)
+    public override void DrawSelf(SKCanvas canvas)
     {
-        time += deltaTime;
-        this.Radius = MathF.Max((MathF.Sin(time) + 1) * 64.0f, 0);
-    }
-
-    public override void Draw(SKCanvas canvas)
-    {
-         using SKPaint paint = Util.CreatePaint(this.Color);
-         canvas.DrawRoundRect(new SKRoundRect((SKRect) this, this.Radius), paint);
+        using SKPaint paint = Util.CreatePaint(this.Color);
+        canvas.DrawRoundRect(new SKRoundRect((SKRect)this, this.Radius), paint);
     }
 
     public static explicit operator SKRect(RectWidget r)
@@ -50,8 +51,12 @@ public class RectWidget : Widget
     public static RectWidget CreateRandom(Random rand, Vector max, Vector size)
     {
         var widget = new RectWidget(rand.NextVector(max), size)
-        { Color = rand.NextColor() };
-        // todo: Extract & Move Method: rand.NextColor()
+                            { Color = rand.NextColor() };
+        if(GlobalRandom.Obj.Next(2) == 1)
+            widget.AddAction(new RectAnimation(widget));
+
+        widget.Children.Add(new RectWidget(widget.Position, widget.Size / 4));
+        widget.Children.Add(new RectWidget(widget.Position + new Vector(100, 100), widget.Size / 4) { Color=SKColors.Black });
         return widget;
     }
 }

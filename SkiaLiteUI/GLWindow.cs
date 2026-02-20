@@ -16,12 +16,15 @@ public class GLWindow
     string title = "SDL3 Create Window";
     int clientX = 1920;
     int clientY = 1080;
+    Renderer renderer;
 
-    public GLWindow(string title, int clientX, int clientY)
+
+    public GLWindow(string title, int clientX, int clientY, Renderer renderer)
     {
         this.title = title;
         this.clientX = clientX;
         this.clientY = clientY;
+        this.renderer = renderer;
     }
 
     public void Run()
@@ -32,8 +35,9 @@ public class GLWindow
         // 2. Create Window
         var window = SDLx.CreateWindow(title, clientX, clientY,
                                 SDL.WindowFlags.HighPixelDensity | 
-                                SDL.WindowFlags.OpenGL | 
-                                SDL.WindowFlags.Borderless);
+                                SDL.WindowFlags.OpenGL // |
+                                //SDL.WindowFlags.Borderless
+                                );
 
         // https://wiki.libsdl.org/SDL3/README-highdpi
         float scale = SDL.GetWindowPixelDensity(window);
@@ -43,8 +47,7 @@ public class GLWindow
         SDL.GLMakeCurrent(window, context);
         SDL.GLSetSwapInterval(1); // 1 - VSync On
 
-        var skiaTest = new SkiaTest();
-        skiaTest.Init((int)(clientX * scale), (int)(clientY * scale));
+        renderer.Init((int)(clientX * scale), (int)(clientY * scale));
 
         Stopwatch timer = Stopwatch.StartNew();
         //int loopCount = 0;
@@ -63,14 +66,14 @@ public class GLWindow
 
             var dt = timer.Elapsed.TotalSeconds;
             timer.Restart();
-            skiaTest.Render((float)dt);
+            renderer.Render((float)dt);
 
             //if(loopCount % 2 == 0 )
             SDLx.GLSwapWindow(window);
             //loopCount++;
         }
 
-        skiaTest.Dispose();
+        renderer.Dispose();
         SDL.GLDestroyContext(context);
         SDL.DestroyWindow(window);
         SDL.Quit();
