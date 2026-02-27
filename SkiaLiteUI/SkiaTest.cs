@@ -74,8 +74,8 @@ public class SkiaTest : IDisposable, Renderer
         widgets.Add(new TextWidget(font, position, text, SKColors.Blue));
         position += step;
 
-        //BuildText(font);
-        CloneText(font);
+        BuildText(font);
+        //CloneText(font);
     }
 
     // Builder design pattern
