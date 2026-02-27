@@ -74,7 +74,7 @@ public class SkiaTest : IDisposable, Renderer
         widgets.Add(new TextWidget(font, position, text, SKColors.Blue));
         position += step;
 
-        BuildText(font);
+        //BuildText(font);
         CloneText(font);
     }
 
