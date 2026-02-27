@@ -6,7 +6,7 @@ using SkiaSharp.HarfBuzz;
 namespace SkiaLiteUI;
 
 // adapted from: https://gist.github.com/tottaka/702c5103b9574bcf773cfd53b669b888
-public class SkiaTest : IDisposable , Renderer
+public class SkiaTest : IDisposable, Renderer
 {
     // todo: make nullable
     GRGlInterface grgInterface;
@@ -31,8 +31,8 @@ public class SkiaTest : IDisposable , Renderer
         surface = SKSurface.Create(grContext, renderTarget, GRSurfaceOrigin.BottomLeft, SKColorType.Rgba8888);
 
         Random rand = new Random();
-        for (int i = 0; i < 100; ++i)
-            widgets.Add(RectWidget.CreateRandom(rand, clientSize, new (256, 256)));
+        //for (int i = 0; i < 100; ++i)
+        //    widgets.Add(RectWidget.CreateRandom(rand, clientSize, new (256, 256)));
         AddText();
     }
 
@@ -55,31 +55,56 @@ public class SkiaTest : IDisposable , Renderer
             widget.Act(deltaTime);
             widget.Draw(canvas);
         }
-        //DrawText(canvas);
 
         canvas.Flush();
     }
 
-/*    void DrawText(SKCanvas canvas)
-    {
-        var typeface = SKTypeface.FromFile(@"Resources\Trirong-Regular.ttf");
-        if (typeface == null) return;
-        var font = new SKFont(typeface, 40);
-
-        // ถ้ามีภาษาไทย อักษรตัวแรกต้องเป็นภาษาไทย ถึงจะ format สระบนซ้อนกันได้ถูกต้อง
-        var text = "รู้กตัญญูกล้ำกลืนนี้นั้นโน้น abc";
-
-        using SKPaint paint2 = Util.CreatePaint(SKColors.Black);
-        canvas.DrawShapedText(text, 128, 300, SKTextAlign.Left, font, paint2);
-    }*/
     void AddText()
     {
-        var typeface = SKTypeface.FromFile(@"Resources\Trirong-Regular.ttf");
-        var font = new SKFont(typeface, 40);
+        var font = Fonts.GetFromFile(@"Resources\Trirong-Regular.ttf", 40);
 
-        // ถ้ามีภาษาไทย อักษรตัวแรกต้องเป็นภาษาไทย ถึงจะ format สระบนซ้อนกันได้ถูกต้อง
+        var position = new Vector(100, 300);
         var text = "รู้กตัญญูกล้ำกลืนนี้นั้นโน้น abc";
-        var widget = new TextWidget() { Font = font, Text = text, Position = new(128, 300) };
-        widgets.Add(widget);
+
+        var step = new Vector(0, 40);
+        widgets.Add(new TextWidget(font, position, text, SKColors.Red));
+        position += step;
+        widgets.Add(new TextWidget(font, position, text, SKColors.Green));
+        position += step;
+        widgets.Add(new TextWidget(font, position, text, SKColors.Blue));
+        position += step;
+
+        BuildText(font);
+        CloneText(font);
+    }
+
+    // Builder design pattern
+    private void BuildText(SKFont font)
+    {
+        var step = new Vector(0, 40);
+        var builder = new TextBuilder(font, new(50, 50), SKColors.Blue) { Step = new Vector(40, 40) };
+
+        for (int i = 0; i < 5; i++)
+        {
+            builder.Color = GlobalRandom.Obj.NextColor();
+            widgets.Add(builder.Create("564 กรวิชญ์ ชูน้อย " + i));
+        }
+    }
+
+    // Prototype design pattern
+    private void CloneText(SKFont font)
+    {
+        string text = "ทดสอบข้อความ prototype ";
+        var prototype = new TextWidget(font, new(50, 50), text, SKColors.Blue);
+        for (int i = 0; i < 5; i++)
+        {
+            var widget = new TextWidget(prototype)
+            {
+                Color = GlobalRandom.Obj.NextColor(),
+                Text = text + i
+            };
+            widgets.Add(widget);
+            prototype.Position += new Vector(0, 40);
+        }
     }
 }
