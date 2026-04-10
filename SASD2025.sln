@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassDesign", "ClassDesign\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkiaLiteUI", "SkiaLiteUI\SkiaLiteUI.csproj", "{4B3DB4A9-B15E-4D8D-A5DD-6D6ADEBAE60F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantLogic", "RestaurantLogic\RestaurantLogic.csproj", "{8BEFB16E-A42B-47EB-9905-C5FCCB8E568C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantLogicTest", "RestaurantLogicTest\RestaurantLogicTest.csproj", "{BAF91265-A004-4597-BF79-CB5A69CFAF0E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{4B3DB4A9-B15E-4D8D-A5DD-6D6ADEBAE60F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B3DB4A9-B15E-4D8D-A5DD-6D6ADEBAE60F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B3DB4A9-B15E-4D8D-A5DD-6D6ADEBAE60F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BEFB16E-A42B-47EB-9905-C5FCCB8E568C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BEFB16E-A42B-47EB-9905-C5FCCB8E568C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BEFB16E-A42B-47EB-9905-C5FCCB8E568C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BEFB16E-A42B-47EB-9905-C5FCCB8E568C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAF91265-A004-4597-BF79-CB5A69CFAF0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAF91265-A004-4597-BF79-CB5A69CFAF0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAF91265-A004-4597-BF79-CB5A69CFAF0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAF91265-A004-4597-BF79-CB5A69CFAF0E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
