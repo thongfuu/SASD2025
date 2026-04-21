@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatternsH1", "DesignP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinForm1", "WinForm1\WinForm1.csproj", "{962A2963-E3FC-4597-8606-5C401913CAAD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "Calculator\Calculator.csproj", "{96D6214B-D82D-4C39-BD30-8AF375FB6EFA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{962A2963-E3FC-4597-8606-5C401913CAAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{962A2963-E3FC-4597-8606-5C401913CAAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{962A2963-E3FC-4597-8606-5C401913CAAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96D6214B-D82D-4C39-BD30-8AF375FB6EFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96D6214B-D82D-4C39-BD30-8AF375FB6EFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96D6214B-D82D-4C39-BD30-8AF375FB6EFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96D6214B-D82D-4C39-BD30-8AF375FB6EFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
